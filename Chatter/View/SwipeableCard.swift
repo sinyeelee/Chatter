@@ -12,6 +12,9 @@ import CoreMotion
 class SwipeableCard: SwipeableCardViewCard {
 
 
+    var likeButtonDelegateObj : likeButtonDelegate?
+
+    
     
     @IBOutlet private weak var titleLabel: UILabel!
     
@@ -23,12 +26,15 @@ class SwipeableCard: SwipeableCardViewCard {
     
     
     @IBAction func LikeButtonClicked(_ sender: UIButton) {
+        
         if sender.currentImage == UIImage(named: "heart_off") {
             sender.setImage(UIImage(named: "heart_on")
                 , for: .normal)
+            likeButtonDelegateObj?.likeButtonPressed(liked: true)
         } else {
             sender.setImage(UIImage(named: "heart_off")
                 , for: .normal)
+            likeButtonDelegateObj?.likeButtonPressed(liked: false)
         }
     }
     
@@ -45,12 +51,12 @@ class SwipeableCard: SwipeableCardViewCard {
         didSet {
             configure(forViewModel: viewModel)
         }
+        
     }
     
     private func configure(forViewModel viewModel: Question?) {
         if let viewModel = viewModel {
             titleLabel.text = viewModel.questionText
-
             
             backgroundContainerView.layer.cornerRadius = 14.0
             backgroundContainerView.layer.masksToBounds = true

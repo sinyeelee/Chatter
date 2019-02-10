@@ -73,6 +73,9 @@
                                                     <constraint firstAttribute="height" constant="35" id="rZg-g1-CrO"/>
                                                 </constraints>
                                                 <state key="normal" title="Button" image="random"/>
+                                                <connections>
+                                                    <action selector="randomButtonPressed:" destination="w6N-Nx-u8p" eventType="touchUpInside" id="gPI-aJ-BFr"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MpP-gj-ncr" userLabel="LikeButton">
                                                 <rect key="frame" x="282" y="40" width="30" height="30"/>
@@ -81,6 +84,9 @@
                                                     <constraint firstAttribute="height" constant="30" id="jUU-4a-YZl"/>
                                                 </constraints>
                                                 <state key="normal" title="Button" image="heart_off"/>
+                                                <connections>
+                                                    <action selector="likeButtonPressed:" destination="w6N-Nx-u8p" eventType="touchUpInside" id="vID-th-XJe"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="0.64891909246575341" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -133,7 +139,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Erc-S9-6dD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1173.5999999999999" y="59.820089955022496"/>
+            <point key="canvasLocation" x="1193" y="61"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Z95-Tp-D8B">

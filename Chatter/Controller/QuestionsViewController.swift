@@ -9,14 +9,20 @@
 import UIKit
 
 
-class QuestionsViewController: UIViewController, SwipeableCardViewDataSource  {
+
+class QuestionsViewController: UIViewController, SwipeableCardViewDataSource, likeButtonDelegate  {
     
+ 
     
     let allQuestions = QuestionBank()
     var selectedCategory = ""
     var selectedCategoryData = [Question]()
     var userSwipeDirection = ""
- 
+    var likedCategory = [Question]()
+    
+
+    
+    
     
     @IBOutlet weak var menuView: UIView!
     
@@ -28,6 +34,19 @@ class QuestionsViewController: UIViewController, SwipeableCardViewDataSource  {
             menuView.isHidden = true
         }
 
+    }
+    
+    @IBAction func randomButtonPressed(_ sender: UIButton) {
+        let randomNumber = Int.random(in: 0 ..< allQuestions.allCategories.count)
+        selectedCategoryData = [allQuestions.allCategories[randomNumber]]
+        swipeableCardView.dataSource = self
+        
+    }
+    
+    @IBAction func likeButtonPressed(_ sender: UIButton) {
+       selectedCategoryData = likedCategory
+       swipeableCardView.dataSource = self
+       
     }
     
     @IBOutlet weak var swipeableCardView: SwipeableCardViewContainer!
@@ -51,6 +70,7 @@ class QuestionsViewController: UIViewController, SwipeableCardViewDataSource  {
         
         displaySelectedCategory()
         swipeableCardView.dataSource = self
+        
         print(selectedCategory)
         print(userSwipeDirection)
         
@@ -69,6 +89,7 @@ class QuestionsViewController: UIViewController, SwipeableCardViewDataSource  {
     func card(forItemAtIndex index: Int) -> SwipeableCardViewCard {
         let viewModel = self.selectedCategoryData[index]
         let cardView = SwipeableCard()
+        cardView.likeButtonDelegateObj = self
         cardView.viewModel = viewModel
         return cardView
     }
@@ -76,6 +97,7 @@ class QuestionsViewController: UIViewController, SwipeableCardViewDataSource  {
     func viewForEmptyCards() -> UIView? {
         return nil
     }
+    
     
 
     func displaySelectedCategory() {
@@ -97,6 +119,31 @@ class QuestionsViewController: UIViewController, SwipeableCardViewDataSource  {
         
     }
     
+    func likeButtonPressed(liked: Bool) {
+        
+        if liked == true {
+            let selectedCard = selectedCategoryData[0]
+            selectedCard.liked = true
+            print("liked")
+            
+        } else {
+            let selectedCard = selectedCategoryData[0]
+            selectedCard.liked = false
+            print("unliked")
+            
+        }
+        filterLikeCards()
+
+    }
+    
+    func filterLikeCards() {
+        
+        let filteredCards = allQuestions.allCategories.filter({$0.liked == true})
+        likedCategory = filteredCards
+        
+    }
+    
+    
     @objc func handleSwipe(sender: UISwipeGestureRecognizer) {
         if sender.state == .ended {
             switch sender.direction {
@@ -109,7 +156,7 @@ class QuestionsViewController: UIViewController, SwipeableCardViewDataSource  {
             }
         }
 
-
+       
         
     // MARK: - SwipeableCardViewDataSource
     

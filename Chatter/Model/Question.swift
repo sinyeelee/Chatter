@@ -13,10 +13,12 @@ class Question {
     
     let questionText : String
     let categoryType : String
+    var liked : Bool
     
-    init(text: String, type: String) {
+    init(text: String, type: String, like: Bool) {
         questionText = text
         categoryType = type
+        liked = like
     }
     
 }
