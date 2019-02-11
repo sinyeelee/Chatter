@@ -9,5 +9,6 @@ target 'Chatter' do
 
 
     pod 'pop'
+    pod 'RealmSwift'
 
 end

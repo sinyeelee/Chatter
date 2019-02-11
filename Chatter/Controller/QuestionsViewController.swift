@@ -19,7 +19,7 @@ class QuestionsViewController: UIViewController, SwipeableCardViewDataSource, li
     var selectedCategoryData = [Question]()
     var userSwipeDirection = ""
     var likedCategory = [Question]()
-    
+    var cardIndex: Int = 0
 
     
     
@@ -37,8 +37,9 @@ class QuestionsViewController: UIViewController, SwipeableCardViewDataSource, li
     }
     
     @IBAction func randomButtonPressed(_ sender: UIButton) {
-        let randomNumber = Int.random(in: 0 ..< allQuestions.allCategories.count)
-        selectedCategoryData = [allQuestions.allCategories[randomNumber]]
+//        let randomNumber = Int.random(in: 0 ..< allQuestions.allCategories.count)
+        selectedCategoryData = allQuestions.allCategories
+        selectedCategoryData.shuffle()
         swipeableCardView.dataSource = self
         
     }
@@ -57,14 +58,13 @@ class QuestionsViewController: UIViewController, SwipeableCardViewDataSource, li
         
     
         
-        let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(sender:)))
-        rightSwipe.direction = .right
+//        let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(sender:)))
+//        rightSwipe.direction = .right
+//
+//        let leftSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(sender:)))
+//        leftSwipe.direction = .left
         
-        let leftSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(sender:)))
-        leftSwipe.direction = .left
-        
-        swipeableCardView.addGestureRecognizer(rightSwipe)
-        swipeableCardView.addGestureRecognizer(leftSwipe)
+
 
         
         
@@ -72,8 +72,7 @@ class QuestionsViewController: UIViewController, SwipeableCardViewDataSource, li
         swipeableCardView.dataSource = self
         
         print(selectedCategory)
-        print(userSwipeDirection)
-        
+     
     }
     
     
@@ -92,7 +91,10 @@ class QuestionsViewController: UIViewController, SwipeableCardViewDataSource, li
         cardView.likeButtonDelegateObj = self
         cardView.viewModel = viewModel
         return cardView
+        
     }
+    
+
     
     func viewForEmptyCards() -> UIView? {
         return nil
@@ -119,11 +121,13 @@ class QuestionsViewController: UIViewController, SwipeableCardViewDataSource, li
         
     }
     
+   
+    
     func likeButtonPressed(liked: Bool) {
-        
+        displaySelectedCategory()
         if liked == true {
-            let selectedCard = selectedCategoryData[0]
-            selectedCard.liked = true
+            
+           
             print("liked")
             
         } else {
@@ -143,20 +147,9 @@ class QuestionsViewController: UIViewController, SwipeableCardViewDataSource, li
         
     }
     
+   
     
-    @objc func handleSwipe(sender: UISwipeGestureRecognizer) {
-        if sender.state == .ended {
-            switch sender.direction {
-            case .right:
-                view.backgroundColor = .red
-            case .left:
-                userSwipeDirection = "left"
-            default:
-                userSwipeDirection = "right"
-            }
-        }
 
-       
         
     // MARK: - SwipeableCardViewDataSource
     
@@ -255,4 +248,4 @@ class QuestionsViewController: UIViewController, SwipeableCardViewDataSource, li
 
 
 
-}
+

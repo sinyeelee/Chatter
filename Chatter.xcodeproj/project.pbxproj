@@ -29,8 +29,6 @@
 		1123CB4422071D50005767A8 /* SwipeableCardViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1123CB4322071D50005767A8 /* SwipeableCardViewDelegate.swift */; };
 		1123CB46220724B2005767A8 /* SwipeableCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1123CB45220724B2005767A8 /* SwipeableCard.swift */; };
 		1123CB4C22099F39005767A8 /* MenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1123CB4B22099F39005767A8 /* MenuButton.swift */; };
-		1123CB4E220BBDA5005767A8 /* Favourite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1123CB4D220BBDA4005767A8 /* Favourite.swift */; };
-		1123CB50220BBDB5005767A8 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1123CB4F220BBDB5005767A8 /* Item.swift */; };
 		1123CB54220D6E00005767A8 /* LikeButtonDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1123CB53220D6DFF005767A8 /* LikeButtonDelegate.swift */; };
 		CD54B0586A6E59F8A67231FF /* Pods_Chatter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 869B0912CD87C1464E5981BB /* Pods_Chatter.framework */; };
 /* End PBXBuildFile section */
@@ -60,8 +58,6 @@
 		1123CB4322071D50005767A8 /* SwipeableCardViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeableCardViewDelegate.swift; sourceTree = "<group>"; };
 		1123CB45220724B2005767A8 /* SwipeableCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeableCard.swift; sourceTree = "<group>"; };
 		1123CB4B22099F39005767A8 /* MenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuButton.swift; sourceTree = "<group>"; };
-		1123CB4D220BBDA4005767A8 /* Favourite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favourite.swift; sourceTree = "<group>"; };
-		1123CB4F220BBDB5005767A8 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		1123CB53220D6DFF005767A8 /* LikeButtonDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeButtonDelegate.swift; sourceTree = "<group>"; };
 		869B0912CD87C1464E5981BB /* Pods_Chatter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Chatter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		86D5EE9BD26CF180DE76586B /* Pods-Chatter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chatter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Chatter/Pods-Chatter.debug.xcconfig"; sourceTree = "<group>"; };
@@ -149,8 +145,6 @@
 			children = (
 				1123CB042202F339005767A8 /* Question.swift */,
 				1123CB072202F43D005767A8 /* QuestionBank.swift */,
-				1123CB4D220BBDA4005767A8 /* Favourite.swift */,
-				1123CB4F220BBDB5005767A8 /* Item.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -273,12 +267,16 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Chatter/Pods-Chatter-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/pop/pop.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/pop.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -302,14 +300,12 @@
 				1123CB3A2206F469005767A8 /* CGRect+SwipeAdditions.swift in Sources */,
 				1123CB46220724B2005767A8 /* SwipeableCard.swift in Sources */,
 				1123CB362206F357005767A8 /* SwipeDirection.swift in Sources */,
-				1123CB4E220BBDA5005767A8 /* Favourite.swift in Sources */,
 				1123CB4022071CCC005767A8 /* SwipeableCardViewDataSource.swift in Sources */,
 				1123CB382206F43E005767A8 /* CGPoint+SwipeableAdditions.swift in Sources */,
 				1123CB4C22099F39005767A8 /* MenuButton.swift in Sources */,
 				1123CB322206F2BC005767A8 /* SwipeableView.swift in Sources */,
 				1123CB342206F310005767A8 /* SwipeableViewDelegate.swift in Sources */,
 				1123CB3C2206F699005767A8 /* NibView.swift in Sources */,
-				1123CB50220BBDB5005767A8 /* Item.swift in Sources */,
 				1123CB2E2206CD98005767A8 /* SwipeableCardViewCard.swift in Sources */,
 				1123CB54220D6E00005767A8 /* LikeButtonDelegate.swift in Sources */,
 				1123CB4222071D2A005767A8 /* SwipeableCardViewContainer.swift in Sources */,
