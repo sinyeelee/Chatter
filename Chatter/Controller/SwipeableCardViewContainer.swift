@@ -26,7 +26,7 @@ class SwipeableCardViewContainer: UIView, SwipeableViewDelegate {
     
     var delegate: SwipeableCardViewDelegate?
     
-    private var cardViews: [SwipeableCardViewCard] = []
+    var cardViews: [SwipeableCardViewCard] = []
     
     private var visibleCardViews: [SwipeableCardViewCard] {
         return subviews as? [SwipeableCardViewCard] ?? []
@@ -58,6 +58,7 @@ class SwipeableCardViewContainer: UIView, SwipeableViewDelegate {
     
             for index in 0..<min(numberOfCards, SwipeableCardViewContainer.numberOfVisibleCards) {
                 addCardView(cardView: dataSource.card(forItemAtIndex: index), atIndex: index)
+                
             }
     
         

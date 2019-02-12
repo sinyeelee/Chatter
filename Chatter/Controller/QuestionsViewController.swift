@@ -7,21 +7,19 @@
 //
 
 import UIKit
-
+import RealmSwift
 
 
 class QuestionsViewController: UIViewController, SwipeableCardViewDataSource, likeButtonDelegate  {
     
- 
     
-    let allQuestions = QuestionBank()
-    var selectedCategory = ""
-    var selectedCategoryData = [Question]()
-    var userSwipeDirection = ""
-    var likedCategory = [Question]()
-    var cardIndex: Int = 0
+    
+//    let allQuestions = QuestionBank()
+    var selectedCategoryData: List<Question>?
+    var likedCategory = List<Question>()
+    var selectedCategory: Category?
 
-    
+    let realm = try! Realm()
     
     
     @IBOutlet weak var menuView: UIView!
@@ -38,15 +36,15 @@ class QuestionsViewController: UIViewController, SwipeableCardViewDataSource, li
     
     @IBAction func randomButtonPressed(_ sender: UIButton) {
 //        let randomNumber = Int.random(in: 0 ..< allQuestions.allCategories.count)
-        selectedCategoryData = allQuestions.allCategories
-        selectedCategoryData.shuffle()
-        swipeableCardView.dataSource = self
+//        selectedCategoryData = allQuestions.allCategories
+//        selectedCategoryData.shuffle()
+//        swipeableCardView.dataSource = self
         
     }
     
     @IBAction func likeButtonPressed(_ sender: UIButton) {
-       selectedCategoryData = likedCategory
-       swipeableCardView.dataSource = self
+//       selectedCategoryData = likedCategory
+//       swipeableCardView.dataSource = self
        
     }
     
@@ -81,12 +79,12 @@ class QuestionsViewController: UIViewController, SwipeableCardViewDataSource, li
 
     
     func numberOfCards() -> Int {
-        return selectedCategoryData.count
+        return selectedCategoryData!.count
 
     }
     
     func card(forItemAtIndex index: Int) -> SwipeableCardViewCard {
-        let viewModel = self.selectedCategoryData[index]
+        let viewModel = self.selectedCategoryData![index]
         let cardView = SwipeableCard()
         cardView.likeButtonDelegateObj = self
         cardView.viewModel = viewModel
@@ -104,21 +102,23 @@ class QuestionsViewController: UIViewController, SwipeableCardViewDataSource, li
 
     func displaySelectedCategory() {
         
-        switch selectedCategory {
-        case "Good For All":
-            return selectedCategoryData = allQuestions.goodForAll
-        case "Date":
-            return selectedCategoryData = allQuestions.date
-        case "Business":
-            return selectedCategoryData = allQuestions.business
-        case "Profiling":
-            return selectedCategoryData = allQuestions.profiling
-        case "Casual":
-            return selectedCategoryData = allQuestions.casual
-        default:
-            return selectedCategoryData = allQuestions.goodForAll
-        }
+        selectedCategoryData = selectedCategory!.questions 
         
+//        switch selectedCategory {
+//        case "Good For All":
+//            return selectedCategoryData = allQuestions.goodForAll
+//        case "Date":
+//            return selectedCategoryData = allQuestions.date
+//        case "Business":
+//            return selectedCategoryData = allQuestions.business
+//        case "Profiling":
+//            return selectedCategoryData = allQuestions.profiling
+//        case "Casual":
+//            return selectedCategoryData = allQuestions.casual
+//        default:
+//            return selectedCategoryData = allQuestions.goodForAll
+//        }
+//
     }
     
    
@@ -131,8 +131,7 @@ class QuestionsViewController: UIViewController, SwipeableCardViewDataSource, li
             print("liked")
             
         } else {
-            let selectedCard = selectedCategoryData[0]
-            selectedCard.liked = false
+           
             print("unliked")
             
         }
@@ -142,8 +141,8 @@ class QuestionsViewController: UIViewController, SwipeableCardViewDataSource, li
     
     func filterLikeCards() {
         
-        let filteredCards = allQuestions.allCategories.filter({$0.liked == true})
-        likedCategory = filteredCards
+//        let filteredCards = allQuestions.allCategories.filter({$0.liked == true})
+//        likedCategory = filteredCards
         
     }
     

@@ -7,29 +7,32 @@
 //
 
 import UIKit
-
+import RealmSwift
 
 class ChatterListViewController: UITableViewController {
     
-    let categories = ["Good for All", "Date", "Business", "Profiling", "Casual"]
+    let realm = try! Realm()
+    
+    var categories: Results<Category>?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        loadCategories()
         tableView.rowHeight = 100
     }
     
     //MARK - Tableview Datasource Methods
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return categories.count
+        return categories?.count ?? 1
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ChatterCategoryCell", for: indexPath)
         
-        cell.textLabel?.text = categories[indexPath.row]
+        cell.textLabel?.text = categories?[indexPath.row].name
         
         return cell
 }
@@ -47,10 +50,15 @@ class ChatterListViewController: UITableViewController {
         let destinationVC = segue.destination as! QuestionsViewController
         
         if let indexPath = tableView.indexPathForSelectedRow {
-            destinationVC.selectedCategory = categories[indexPath.row]
-            
-      
+            destinationVC.selectedCategory = categories![indexPath.row]
 
         }
+    }
+    
+    func loadCategories() {
+        
+        categories = realm.objects(Category.self)
+        
+        tableView.reloadData()
     }
 }

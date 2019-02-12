@@ -7,18 +7,15 @@
 //
 
 import Foundation
+import RealmSwift
 
-
-class Question {
+class Question: Object {
     
-    let questionText : String
-    let categoryType : String
-    var liked : Bool
-    
-    init(text: String, type: String, like: Bool) {
-        questionText = text
-        categoryType = type
-        liked = like
-    }
+    @objc dynamic var questionText = ""
+    @objc dynamic var categoryType = ""
+    @objc dynamic var liked = false
+    var ParentCategory = LinkingObjects(fromType: Category.self, property: "questions")
     
 }
+
+
