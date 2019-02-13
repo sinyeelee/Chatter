@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		111594A22212B29C000258D7 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111594A12212B29C000258D7 /* Category.swift */; };
+		111594A422143D30000258D7 /* Favourite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111594A322143D2F000258D7 /* Favourite.swift */; };
 		1123CAF12202E71B005767A8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1123CAF02202E71B005767A8 /* AppDelegate.swift */; };
 		1123CAF32202E71B005767A8 /* ChatterListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1123CAF22202E71B005767A8 /* ChatterListViewController.swift */; };
 		1123CAF62202E71B005767A8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1123CAF42202E71B005767A8 /* Main.storyboard */; };
@@ -35,6 +36,7 @@
 
 /* Begin PBXFileReference section */
 		111594A12212B29C000258D7 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		111594A322143D2F000258D7 /* Favourite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favourite.swift; sourceTree = "<group>"; };
 		1123CAED2202E71B005767A8 /* Chatter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chatter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1123CAF02202E71B005767A8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1123CAF22202E71B005767A8 /* ChatterListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatterListViewController.swift; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 			children = (
 				111594A12212B29C000258D7 /* Category.swift */,
 				1123CB042202F339005767A8 /* Question.swift */,
+				111594A322143D2F000258D7 /* Favourite.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -306,6 +309,7 @@
 				1123CB322206F2BC005767A8 /* SwipeableView.swift in Sources */,
 				1123CB342206F310005767A8 /* SwipeableViewDelegate.swift in Sources */,
 				1123CB3C2206F699005767A8 /* NibView.swift in Sources */,
+				111594A422143D30000258D7 /* Favourite.swift in Sources */,
 				1123CB2E2206CD98005767A8 /* SwipeableCardViewCard.swift in Sources */,
 				1123CB54220D6E00005767A8 /* LikeButtonDelegate.swift in Sources */,
 				1123CB4222071D2A005767A8 /* SwipeableCardViewContainer.swift in Sources */,

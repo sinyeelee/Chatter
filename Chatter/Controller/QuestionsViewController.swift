@@ -17,6 +17,7 @@ class QuestionsViewController: UIViewController, SwipeableCardViewDataSource, li
 
     var selectedCategoryData: List<Question>?
     var likedCategory = List<Question>()
+    var randomCategory = List<Question>()
     var selectedCategory: Category?
 
 
@@ -38,9 +39,15 @@ class QuestionsViewController: UIViewController, SwipeableCardViewDataSource, li
     
     @IBAction func randomButtonPressed(_ sender: UIButton) {
         
-//        let cat = Category()
-//        let allQns = cat.questions
-//        let randomAllQns = allQns.shuffled()
+        let randomCardsList = realm.objects(Question.self).shuffled()
+        let randomCards = randomCardsList.reduce(List<Question>()) { (list, element) -> List<Question> in
+            list.append(element)
+            return list
+        }
+        randomCategory = randomCards
+        selectedCategoryData = randomCategory
+        swipeableCardView.dataSource = self
+        
 //
 //        let randomNumber = Int.random(in: 0 ..< allQuestions.allCategories.count)
 //        selectedCategoryData = allQuestions
@@ -51,19 +58,15 @@ class QuestionsViewController: UIViewController, SwipeableCardViewDataSource, li
     
     @IBAction func likeButtonPressed(_ sender: UIButton) {
         
-        let cat = Category()
-        let allQns = cat.questions
-        let allQnsCount = cat.questions.count
-        for i in allQns {
-            if i.liked == true {
-                likedCategory.append(i)
-            } else {
-                return
-            }
+        let favCardsList = realm.objects(Question.self).filter{$0.liked == true}
+        let favCards = favCardsList.reduce(List<Question>()) { (list, element) -> List<Question> in
+            list.append(element)
+            return list
         }
-       selectedCategoryData = likedCategory
-       swipeableCardView.dataSource = self
-       print(allQns)
+        likedCategory = favCards
+        selectedCategoryData = likedCategory
+        swipeableCardView.dataSource = self
+        print(favCards.count)
     }
     
     @IBOutlet weak var swipeableCardView: SwipeableCardViewContainer!
@@ -186,15 +189,11 @@ class QuestionsViewController: UIViewController, SwipeableCardViewDataSource, li
         }
         
 
+        
+        
     }
     
    
-    
-    func allCards() {
-        
- 
-        
-    }
    
     
 
