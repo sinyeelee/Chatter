@@ -14,13 +14,15 @@ class QuestionsViewController: UIViewController, SwipeableCardViewDataSource, li
     
     
     
-//    let allQuestions = QuestionBank()
+
     var selectedCategoryData: List<Question>?
     var likedCategory = List<Question>()
     var selectedCategory: Category?
 
+
     let realm = try! Realm()
     
+
     
     @IBOutlet weak var menuView: UIView!
     
@@ -35,17 +37,33 @@ class QuestionsViewController: UIViewController, SwipeableCardViewDataSource, li
     }
     
     @IBAction func randomButtonPressed(_ sender: UIButton) {
+        
+//        let cat = Category()
+//        let allQns = cat.questions
+//        let randomAllQns = allQns.shuffled()
+//
 //        let randomNumber = Int.random(in: 0 ..< allQuestions.allCategories.count)
-//        selectedCategoryData = allQuestions.allCategories
+//        selectedCategoryData = allQuestions
 //        selectedCategoryData.shuffle()
 //        swipeableCardView.dataSource = self
         
     }
     
     @IBAction func likeButtonPressed(_ sender: UIButton) {
-//       selectedCategoryData = likedCategory
-//       swipeableCardView.dataSource = self
-       
+        
+        let cat = Category()
+        let allQns = cat.questions
+        let allQnsCount = cat.questions.count
+        for i in allQns {
+            if i.liked == true {
+                likedCategory.append(i)
+            } else {
+                return
+            }
+        }
+       selectedCategoryData = likedCategory
+       swipeableCardView.dataSource = self
+       print(allQns)
     }
     
     @IBOutlet weak var swipeableCardView: SwipeableCardViewContainer!
@@ -69,7 +87,8 @@ class QuestionsViewController: UIViewController, SwipeableCardViewDataSource, li
         displaySelectedCategory()
         swipeableCardView.dataSource = self
         
-        print(selectedCategory)
+        print(selectedCategory!)
+
      
     }
     
@@ -88,6 +107,13 @@ class QuestionsViewController: UIViewController, SwipeableCardViewDataSource, li
         let cardView = SwipeableCard()
         cardView.likeButtonDelegateObj = self
         cardView.viewModel = viewModel
+        if viewModel.liked == true {
+            cardView.LikeButton.setImage(UIImage(named: "heart_on")
+                , for: .normal)
+        } else {
+            cardView.LikeButton.setImage(UIImage(named: "heart_off")
+                , for: .normal)
+        }
         return cardView
         
     }
@@ -123,29 +149,52 @@ class QuestionsViewController: UIViewController, SwipeableCardViewDataSource, li
     
    
     
-    func likeButtonPressed(liked: Bool) {
-        displaySelectedCategory()
+    func likeButtonPressed(question: String, liked: Bool) {
+        
+        let filteredQns = selectedCategoryData!.filter {$0.questionText == question}
+        let f1 = filteredQns.first
+        
+        
         if liked == true {
             
-           
+            do {
+                let realm = try Realm()
+                            try realm.write {
+                                f1?.liked = true
+                            }
+            } catch {
+                print("Error initializing new realm, \(error)")
+            }
+
             print("liked")
+            print(f1!)
             
         } else {
            
+            do {
+                let realm = try Realm()
+                try realm.write {
+                    f1?.liked = false
+                }
+            } catch {
+                print("Error initializing new realm, \(error)")
+            }
+            
             print("unliked")
+            print(f1!)
             
         }
-        filterLikeCards()
+        
 
     }
     
-    func filterLikeCards() {
+   
+    
+    func allCards() {
         
-//        let filteredCards = allQuestions.allCategories.filter({$0.liked == true})
-//        likedCategory = filteredCards
+ 
         
     }
-    
    
     
 

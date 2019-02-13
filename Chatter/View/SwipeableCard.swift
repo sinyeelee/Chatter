@@ -30,11 +30,12 @@ class SwipeableCard: SwipeableCardViewCard {
         if sender.currentImage == UIImage(named: "heart_off") {
             sender.setImage(UIImage(named: "heart_on")
                 , for: .normal)
-            likeButtonDelegateObj?.likeButtonPressed(liked: true)
+            likeButtonDelegateObj?.likeButtonPressed(question: (viewModel?.questionText)!, liked: true)
+
         } else {
             sender.setImage(UIImage(named: "heart_off")
                 , for: .normal)
-            likeButtonDelegateObj?.likeButtonPressed(liked: false)
+            likeButtonDelegateObj?.likeButtonPressed(question: (viewModel?.questionText)!, liked: false)
         }
     }
     

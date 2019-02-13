@@ -9,5 +9,5 @@
 import Foundation
 
 protocol likeButtonDelegate {
-    func likeButtonPressed(liked: Bool)
+    func likeButtonPressed(question: String, liked: Bool)
 }
