@@ -53,7 +53,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QD3-Af-r2z" customClass="SwipeableCardViewContainer" customModule="Chatter" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Cards Left" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YV8-i3-5LV">
+                                <rect key="frame" x="134.5" y="323" width="106" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QD3-Af-r2z" customClass="SwipeableCardViewContainer" customModule="Chatter" customModuleProvider="target">
                                 <rect key="frame" x="5" y="133.5" width="365" height="400"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="0.50551155821917804" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -122,6 +128,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="YV8-i3-5LV" firstAttribute="centerY" secondItem="A9j-ZH-JGv" secondAttribute="centerY" id="8LG-5v-xBU"/>
                             <constraint firstItem="QD3-Af-r2z" firstAttribute="centerX" secondItem="A9j-ZH-JGv" secondAttribute="centerX" id="C5o-hz-vJt"/>
                             <constraint firstItem="QD3-Af-r2z" firstAttribute="leading" secondItem="A9j-ZH-JGv" secondAttribute="leading" constant="5" id="QA8-aG-tiw"/>
                             <constraint firstItem="EZH-5D-xKA" firstAttribute="top" secondItem="QD3-Af-r2z" secondAttribute="bottom" id="XLz-mN-Xhx"/>
@@ -130,6 +137,7 @@
                             <constraint firstAttribute="trailing" secondItem="QD3-Af-r2z" secondAttribute="trailing" constant="5" id="jta-fA-UJa"/>
                             <constraint firstItem="QD3-Af-r2z" firstAttribute="centerY" secondItem="A9j-ZH-JGv" secondAttribute="centerY" id="ktO-H5-8UM"/>
                             <constraint firstItem="2vv-fA-sLv" firstAttribute="top" secondItem="EZH-5D-xKA" secondAttribute="bottom" id="w80-qW-7XI"/>
+                            <constraint firstItem="YV8-i3-5LV" firstAttribute="centerX" secondItem="A9j-ZH-JGv" secondAttribute="centerX" id="zFu-fH-w2d"/>
                         </constraints>
                     </view>
                     <connections>
@@ -144,13 +152,12 @@
         <!--Navigation Controller-->
         <scene sceneID="Z95-Tp-D8B">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="icx-sw-lVg" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Kyw-yh-5Kr" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="HYK-Ki-B6M">
                         <rect key="frame" x="0.0" y="20" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="1" green="0.33302987820000002" blue="0.2170850862" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" red="1" green="0.33333333333333331" blue="0.21568627450980393" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="largeTitleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </textAttributes>
@@ -160,6 +167,7 @@
                         <segue destination="mKE-xH-fac" kind="relationship" relationship="rootViewController" id="B5e-XT-Oa8"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="icx-sw-lVg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-452" y="60.719640179910051"/>
         </scene>

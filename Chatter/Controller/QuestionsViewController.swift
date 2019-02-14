@@ -48,11 +48,6 @@ class QuestionsViewController: UIViewController, SwipeableCardViewDataSource, li
         selectedCategoryData = randomCategory
         swipeableCardView.dataSource = self
         
-//
-//        let randomNumber = Int.random(in: 0 ..< allQuestions.allCategories.count)
-//        selectedCategoryData = allQuestions
-//        selectedCategoryData.shuffle()
-//        swipeableCardView.dataSource = self
         
     }
     
@@ -75,17 +70,6 @@ class QuestionsViewController: UIViewController, SwipeableCardViewDataSource, li
     override func viewDidLoad() {
         super.viewDidLoad()
         
-    
-        
-//        let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(sender:)))
-//        rightSwipe.direction = .right
-//
-//        let leftSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(sender:)))
-//        leftSwipe.direction = .left
-        
-
-
-        
         
         displaySelectedCategory()
         swipeableCardView.dataSource = self
@@ -96,9 +80,18 @@ class QuestionsViewController: UIViewController, SwipeableCardViewDataSource, li
     }
     
     
+    override func viewWillAppear(_ animated: Bool) {
+        
+        self.navigationController?.navigationBar.barTintColor = UIColor(red:0.96, green:0.96, blue:0.96, alpha:1.0)
+        self.navigationController?.navigationBar.tintColor = UIColor.darkGray
+    }
     
-
-
+    override func viewWillDisappear(_ animated: Bool) {
+        let originalColor = UIColor(red:1.00, green:0.33, blue:0.22, alpha:1.0)
+        navigationController?.navigationBar.barTintColor = originalColor
+        navigationController?.navigationBar.tintColor = UIColor.white
+    }
+    
     
     func numberOfCards() -> Int {
         return selectedCategoryData!.count
@@ -131,23 +124,8 @@ class QuestionsViewController: UIViewController, SwipeableCardViewDataSource, li
 
     func displaySelectedCategory() {
         
-        selectedCategoryData = selectedCategory!.questions 
+        selectedCategoryData = selectedCategory!.questions
         
-//        switch selectedCategory {
-//        case "Good For All":
-//            return selectedCategoryData = allQuestions.goodForAll
-//        case "Date":
-//            return selectedCategoryData = allQuestions.date
-//        case "Business":
-//            return selectedCategoryData = allQuestions.business
-//        case "Profiling":
-//            return selectedCategoryData = allQuestions.profiling
-//        case "Casual":
-//            return selectedCategoryData = allQuestions.casual
-//        default:
-//            return selectedCategoryData = allQuestions.goodForAll
-//        }
-//
     }
     
    
@@ -196,24 +174,7 @@ class QuestionsViewController: UIViewController, SwipeableCardViewDataSource, li
    
    
     
-
-        
-    // MARK: - SwipeableCardViewDataSource
     
-  
-    
-//    @objc func handleSwipe(sender: UISwipeGestureRecognizer) {
-//        if sender.state == .ended {
-//            switch sender.direction {
-//            case .right:
-//                nextQuestion()
-//            case .left:
-//                nextQuestion()
-//            default:
-//                nextQuestion()
-//            }
-//        }
-//    }
     
    
    
