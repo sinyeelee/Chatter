@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Questions for ...-->
+        <!--Chatter Qns-->
         <scene sceneID="Bhh-9s-JRL">
             <objects>
                 <tableViewController id="mKE-xH-fac" customClass="ChatterListViewController" customModule="Chatter" customModuleProvider="target" sceneMemberID="viewController">
@@ -32,7 +32,7 @@
                             <outlet property="delegate" destination="mKE-xH-fac" id="I0a-V6-VV1"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Questions for ..." id="4Bt-tK-R7F"/>
+                    <navigationItem key="navigationItem" title="Chatter Qns" id="4Bt-tK-R7F"/>
                     <connections>
                         <segue destination="w6N-Nx-u8p" kind="show" identifier="goToQuestions" id="UBU-NX-Okd"/>
                     </connections>

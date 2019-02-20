@@ -31,6 +31,7 @@
 		1123CB46220724B2005767A8 /* SwipeableCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1123CB45220724B2005767A8 /* SwipeableCard.swift */; };
 		1123CB4C22099F39005767A8 /* MenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1123CB4B22099F39005767A8 /* MenuButton.swift */; };
 		1123CB54220D6E00005767A8 /* LikeButtonDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1123CB53220D6DFF005767A8 /* LikeButtonDelegate.swift */; };
+		1190FC842216A54800777D42 /* default.realm in Resources */ = {isa = PBXBuildFile; fileRef = 1190FC832216A54800777D42 /* default.realm */; };
 		CD54B0586A6E59F8A67231FF /* Pods_Chatter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 869B0912CD87C1464E5981BB /* Pods_Chatter.framework */; };
 /* End PBXBuildFile section */
 
@@ -61,6 +62,7 @@
 		1123CB45220724B2005767A8 /* SwipeableCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeableCard.swift; sourceTree = "<group>"; };
 		1123CB4B22099F39005767A8 /* MenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuButton.swift; sourceTree = "<group>"; };
 		1123CB53220D6DFF005767A8 /* LikeButtonDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeButtonDelegate.swift; sourceTree = "<group>"; };
+		1190FC832216A54800777D42 /* default.realm */ = {isa = PBXFileReference; lastKnownFileType = file; path = default.realm; sourceTree = "<group>"; };
 		869B0912CD87C1464E5981BB /* Pods_Chatter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Chatter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		86D5EE9BD26CF180DE76586B /* Pods-Chatter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chatter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Chatter/Pods-Chatter.debug.xcconfig"; sourceTree = "<group>"; };
 		93E2394E56A7E3381DC06B24 /* Pods-Chatter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chatter.release.xcconfig"; path = "Pods/Target Support Files/Pods-Chatter/Pods-Chatter.release.xcconfig"; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 		1123CB062202F412005767A8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				1190FC832216A54800777D42 /* default.realm */,
 				111594A12212B29C000258D7 /* Category.swift */,
 				1123CB042202F339005767A8 /* Question.swift */,
 				111594A322143D2F000258D7 /* Favourite.swift */,
@@ -229,6 +232,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1190FC842216A54800777D42 /* default.realm in Resources */,
 				1123CB2A2206A75B005767A8 /* SwipeableCard.xib in Resources */,
 				1123CAFB2202E71D005767A8 /* LaunchScreen.storyboard in Resources */,
 				1123CAF82202E71D005767A8 /* Assets.xcassets in Resources */,
