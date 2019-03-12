@@ -19,21 +19,42 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
 //        print(Realm.Configuration.defaultConfiguration.fileURL)
         
-        let bundlePath = Bundle.main.path(forResource: "default", ofType: "realm")
-        let destPath = Realm.Configuration.defaultConfiguration.fileURL?.path
-        let fileManager = FileManager.default
-        
-        if fileManager.fileExists(atPath: destPath!) {
-            //File exist, do nothing
-            //print(fileManager.fileExists(atPath: destPath!))
-        } else {
+        let defaultPath = Realm.Configuration.defaultConfiguration.fileURL?.path
+        let path = Bundle.main.path(forResource: "default", ofType: "realm")
+        if !FileManager.default.fileExists(atPath: defaultPath!), let bundledPath = path {
             do {
-                //Copy file from bundle to Realm default path
-                try fileManager.copyItem(atPath: bundlePath!, toPath: destPath!)
+                try FileManager.default.copyItem(atPath: bundledPath, toPath: defaultPath!)
             } catch {
-                print("\n",error)
+                print("Error copying pre-populated Realm \(error)")
             }
         }
+        
+//        let bundlePath = Bundle.main.path(forResource: "default", ofType: "realm")
+//        let destPath = Realm.Configuration.defaultConfiguration.fileURL?.path
+//        let fileManager = FileManager.default
+//
+//        if fileManager.fileExists(atPath: destPath!) {
+//            //File exist, do nothing
+//            print(fileManager.fileExists(atPath: destPath!))
+//
+//
+//            do {
+//                let items = try fileManager.contentsOfDirectory(atPath: destPath!)
+//                print(items)
+//            } catch {
+//                print(error)
+//            }
+//
+//        } else {
+//            do {
+//                //Copy file from bundle to Realm default path
+//                try fileManager.copyItem(atPath: bundlePath!, toPath: destPath!)
+//            } catch {
+//                print("\n",error)
+//            }
+//        }
+//
+//
         
 //        do {
 //            let realm = try Realm()
